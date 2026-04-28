@@ -1,26 +1,50 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+/* Let's keep it extremely simple to avoid NextJS processing errors */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0F172A;
+  --color-foreground: #FFFFFF;
+  --font-sans: var(--font-inter);
+  --font-inter: var(--font-inter);
+  
+  --color-surface: #0F172A;
+  --color-surface-raised: #161E2F;
+  --color-surface-elevated: #1E293B;
+  --color-primary: #FFFFFF;
+  --color-secondary: #94A3B8;
+  --color-accent: #38BDF8;
+  --color-border-subtle: #1E293B;
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border-subtle;
+    border-color: #1E293B;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: #0F172A;
+    color: #94A3B8;
+  }
+  h1, h2, h3, h4, h5, h6, .text-primary {
+    color: #FFFFFF;
+  }
+  .display-lg { font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: #FFFFFF; }
+  .headline-md { font-size: 30px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: #FFFFFF; }
+  .title-sm { font-size: 20px; font-weight: 500; line-height: 1.4; color: #FFFFFF; }
+  .body-md { font-size: 16px; font-weight: 400; line-height: 1.6; }
+  .body-sm { font-size: 14px; font-weight: 400; line-height: 1.6; }
+  .label-caps { font-size: 12px; font-weight: 600; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; }
 }
